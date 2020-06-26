@@ -10,5 +10,3 @@ spec:
       app: sampleapp
   endpoints:
   - port: metrics
-  selector:
-    app: fortio
