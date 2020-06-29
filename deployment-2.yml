@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-v2
+spec:
+  selector:
+    matchLabels:
+      app: spring-boot-example
+      version: "v2"
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: spring-boot-example
+        version: "v2"
+    spec:
+      containers:
+      - name: spring-boot-example
+        image: 'httpd'
+        ports:
+        - containerPort: 8080
+        
